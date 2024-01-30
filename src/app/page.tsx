@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import axios from "axios";
+import { format, parseISO } from "date-fns";
 import { useQuery } from "react-query";
 
 //
@@ -77,6 +78,8 @@ export default function Home() {
   );
   // console.log(data?.city.name);
 
+  const firstData = data?.list[0]; // it will return data instead of day so we are using date-fns library to convert it
+
   if (isLoading) {
     return (
       <div className="flex items-center min-h-screen justify-center">
@@ -88,6 +91,23 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
       <Navbar />
+      <main className="px-3 max-w-7xl mx-auto flex flex-col gap-9 w-full pb-10 pt-4">
+        {/* today's data  */}
+        <section>
+          <div>
+            <h2 className="flex gap-1 text-2xl items-end">
+              <p>{format(parseISO(firstData?.dt_txt ?? ""), "EEEE")}</p>
+              <p className="text-lg">
+                ({format(parseISO(firstData?.dt_txt ?? ""), "dd.MM.yyyy")})
+              </p>
+            </h2>
+            <div></div>
+          </div>
+        </section>
+
+        {/* next 7 days data  */}
+        <section></section>
+      </main>
     </div>
   );
 }
