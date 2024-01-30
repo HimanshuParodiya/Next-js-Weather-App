@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add the custom styles for rounded scrollbar */
+.rounded-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.rounded-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.rounded-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 12px;
+  border: 3px solid transparent;
+}
+
+.rounded-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.rounded-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #a0aec0; /* Change the color to your desired color */
+  border: 3px solid #4a5568; /* Change the color to your desired color */
+}
